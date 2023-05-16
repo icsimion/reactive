@@ -1,0 +1,6 @@
+server:
+  port: 8095
+
+management:
+  server:
+    port: 8088

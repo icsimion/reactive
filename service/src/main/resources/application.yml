@@ -1,0 +1,34 @@
+server:
+  port: 8085
+
+management:
+  server:
+    port: 8086
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3351/reactivedb
+    username: reactivedb
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 3
+      connection-timeout: 35000
+
+  r2dbc:
+    url: r2dbc:pool:mysql://localhost:3351/reactivedb?zeroDateTimeBehavior=convertToNull&useSSL=false&useServerPrepareStatement=true
+    username: reactivedb
+    password: password
+  flyway:
+    enabled: true
+  jpa:
+    show-sql: true
+
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          repository: DEBUG
+        r2dbc:
+          core: DEBUG

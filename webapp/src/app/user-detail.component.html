@@ -1,0 +1,7 @@
+<h2>User Details</h2>
+<div *ngIf="user">
+  <blockquote>
+    <p>{{user.firstName}}</p>
+    <footer>{{user.lastName}} (User identifier: {{user.id}})</footer>
+  </blockquote>
+</div>

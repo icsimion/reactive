@@ -1,0 +1,23 @@
+server:
+  port: 8025
+
+management:
+  server:
+    port: 8026
+
+clients:
+  baseUrl: http://localhost:8085
+  getContactUserPath: service/api/users/contact/{id}
+  getDirectoryUserPath: service/api/users/directory/{id}
+  getLocationUserPath: service/api/users/location/{id}
+  retryBackoff: 1
+  retryMaxAttempts: 3
+
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          repository: DEBUG
+        r2dbc:
+          core: DEBUG

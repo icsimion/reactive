@@ -1,0 +1,38 @@
+version: '1'
+services:
+
+  redis:
+    image: redis
+    container_name: redis-reactive
+    restart: always
+    ports:
+      - "6385:6385"
+    labels:
+      - reactive_docker
+    networks:
+      - reactivePlatform
+
+  database:
+    image: mysql:8.0
+    ports:
+      - "3351:3306"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: reactivedb
+      MYSQL_USER: reactivedb
+      MYSQL_PASSWORD: password
+    labels:
+      - reactive_docker
+    networks:
+      - reactivePlatform
+    volumes:
+      - database-data:/var/lib/mysql8
+
+volumes:
+  database-data:
+
+networks:
+  reactivePlatform:
+    name: reactivePlatform
+    driver: bridge
